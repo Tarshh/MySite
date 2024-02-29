@@ -43,7 +43,6 @@ const Container = styled.div`
   margin: 0 auto;
   max-width: 40rem;
   z-index: 1;
-  position: relative;
   pointer-events: none;
   @media ${device.md} {
     text-align: center;
