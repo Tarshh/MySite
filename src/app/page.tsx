@@ -1,95 +1,96 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+
+import { Button } from "@/components/Button";
+import { device } from "@/styling/breakpoints";
+import styled from "styled-components";
+import { useEffect, useState } from "react";
+import { backgroundSlide, fadeIn } from "@/styling/keyframes";
+import { ptSerif } from "@/styling/fonts";
 
 export default function Home() {
+  const [loaded, setLoaded] = useState(0);
+
+  useEffect(() => {
+    const loadTimer = setTimeout(() => {
+      setLoaded(1);
+    }, 1000);
+
+    return () => clearTimeout(loadTimer);
+  }, []);
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    <HeroContainer>
+      <Heading>
+        Tars <ColoredHeading loaded={loaded}>Hoeykens</ColoredHeading>
+      </Heading>
+      <StyledText>
+        Enthusiatic dude with a passion for learning, music and web development.
+      </StyledText>
+      <ButtonsContainer>
+        <Button type="normal">View projects</Button>
+        <Button type="transparant">Contact me</Button>
+      </ButtonsContainer>
+    </HeroContainer>
   );
 }
+
+const HeroContainer = styled.div`
+  animation: ${fadeIn} 0.7s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  font-size: 2rem;
+  padding: 1rem;
+  margin: 0 auto;
+  max-width: 40rem;
+  @media ${device.md} {
+    text-align: center;
+    max-width: 50rem;
+  }
+`;
+
+const Heading = styled.h1`
+  font-size: 4rem;
+  @media ${device.md} {
+    font-size: 5.5rem;
+  }
+  @media ${device.lg} {
+    font-size: 6.5rem;
+  }
+`;
+
+const StyledText = styled.p`
+  font-family: var(--font-PT-Serif);
+  font-size: 1.5rem;
+
+  @media ${device.md} {
+    color: #101112;
+  }
+`;
+
+const ColoredHeading = styled.span<{ loaded: number }>`
+  display: inline;
+  background: white;
+  background: ${(props) =>
+    props.loaded
+      ? "linear-gradient(to right, #f36458 50%, transparent 50%);"
+      : "white"};
+  color: ${(props) => (props.loaded ? "white" : "black")};
+  background-size: 200% 100%;
+  animation: ${backgroundSlide} 0.5s ease-in 1s;
+  transition: color 0.5s ease 0.3s;
+`;
+
+const ButtonsContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  width: 100%;
+  @media ${device.md} {
+    flex-direction: row;
+    justify-content: center;
+    max-width: 24rem;
+    align-self: center;
+  }
+`;
