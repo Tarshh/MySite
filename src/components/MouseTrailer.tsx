@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 type Props = {
   mousePosition: {
@@ -12,15 +12,9 @@ export function MouseTrailer({ mousePosition, showTrailer }: Props) {
   return <Trailer mousePosition={mousePosition} showTrailer={showTrailer} />;
 }
 
-const Trailer = styled.div.attrs<{
-  mousePosition: { xPosition: number; yPosition: number };
-  showTrailer: boolean;
-}>((props) => ({
-  style: {
-    left: `${props.mousePosition.xPosition}px`,
-    top: `${props.mousePosition.yPosition}px`,
-  },
-}))`
+const Trailer = styled.div<Props>`
+  left: ${(props) => props.mousePosition.xPosition}px;
+  top: ${(props) => props.mousePosition.yPosition}px;
   height: 12rem;
   width: 12rem;
   background-color: #b0edf3;

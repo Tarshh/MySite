@@ -2,9 +2,9 @@
 
 import { Button } from "@/components/Button";
 import { device } from "@/styling/breakpoints";
-import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { backgroundSlide, fadeIn } from "@/styling/keyframes";
+import styled from "@emotion/styled";
 
 export default function Hero() {
   const [loaded, setLoaded] = useState(0);

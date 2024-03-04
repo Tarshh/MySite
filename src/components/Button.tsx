@@ -1,5 +1,5 @@
+import styled from "@emotion/styled";
 import React, { ReactNode } from "react";
-import styled from "styled-components";
 
 type Props = {
   type: "normal" | "transparant";
@@ -21,6 +21,7 @@ const StyledButton = styled.button`
   border-radius: 0.25rem;
   padding: 1rem;
   transition-duration: 0.3s;
+  pointer-events: all;
 `;
 
 const NormalButton = styled(StyledButton)`

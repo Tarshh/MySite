@@ -2,8 +2,8 @@
 
 import { MouseTrailer } from "@/components/MouseTrailer";
 import Hero from "@/components/Sections/Hero";
+import styled from "@emotion/styled";
 import { useState } from "react";
-import styled from "styled-components";
 
 export default function Home() {
   const [showTrailer, setShowTrailer] = useState(false);
