@@ -3,7 +3,7 @@
 import { MouseTrailer } from "@/components/MouseTrailer";
 import Hero from "@/components/Sections/Hero";
 import styled from "@emotion/styled";
-import { useState } from "react";
+import { useState, MouseEvent } from "react";
 
 export default function Home() {
   const [showTrailer, setShowTrailer] = useState(false);
@@ -25,7 +25,7 @@ export default function Home() {
     <Container
       onMouseOver={() => setShowTrailer(true)}
       onMouseLeave={() => setShowTrailer(false)}
-      onMouseMove={(e: MouseEvent) => handleMouseMove(e)}
+      onMouseMove={(e) => handleMouseMove(e)}
     >
       <Hero />
       <MouseTrailer mousePosition={mouseposition} showTrailer={showTrailer} />
