@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { backgroundSlide, fadeIn } from "@/styling/keyframes";
 
-export default function Home() {
+export default function Hero() {
   const [loaded, setLoaded] = useState(0);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function Home() {
   );
 }
 
-const Container = styled.div`
+const Container = styled.section`
   animation: ${fadeIn} 0.7s ease;
   display: flex;
   flex-direction: column;
