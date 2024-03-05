@@ -1,17 +1,35 @@
 import styled from "@emotion/styled";
-import React, { ReactNode } from "react";
+import React, { ReactNode, useCallback } from "react";
 
 type Props = {
   type: "normal" | "transparant";
   children: ReactNode;
+  setButtonHovered: (e: boolean) => void;
 };
 
-export function Button({ type, children }: Props) {
+export function Button({ type, children, setButtonHovered }: Props) {
+  const handleMouseOver = () => setButtonHovered(true);
+  const handleMouseLeave = () => setButtonHovered(false);
+
   switch (type) {
     case "normal":
-      return <NormalButton>{children}</NormalButton>;
+      return (
+        <NormalButton
+          onMouseOver={handleMouseOver}
+          onMouseLeave={handleMouseLeave}
+        >
+          {children}
+        </NormalButton>
+      );
     case "transparant":
-      return <TransparantButton>{children}</TransparantButton>;
+      return (
+        <TransparantButton
+          onMouseOver={handleMouseOver}
+          onMouseLeave={handleMouseLeave}
+        >
+          {children}
+        </TransparantButton>
+      );
   }
 }
 

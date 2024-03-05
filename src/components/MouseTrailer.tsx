@@ -6,10 +6,21 @@ type Props = {
     yPosition: number;
   };
   showTrailer: boolean;
+  buttonHovered: boolean;
 };
 
-export function MouseTrailer({ mousePosition, showTrailer }: Props) {
-  return <Trailer mousePosition={mousePosition} showTrailer={showTrailer} />;
+export function MouseTrailer({
+  mousePosition,
+  showTrailer,
+  buttonHovered,
+}: Props) {
+  return (
+    <Trailer
+      mousePosition={mousePosition}
+      showTrailer={showTrailer}
+      buttonHovered={buttonHovered}
+    />
+  );
 }
 
 const Trailer = styled.div<Props>`
@@ -23,4 +34,9 @@ const Trailer = styled.div<Props>`
   opacity: 0;
   cursor: none;
   opacity: ${(props) => (props.showTrailer ? 1 : 0)};
+  transform: ${(props) => (props.buttonHovered ? "scale(0.5)" : "scale(1)")};
+  transition: ${(props) =>
+    props.buttonHovered
+      ? "transform 0.3s ease-out"
+      : "transform 0.3s ease-out"};
 `;

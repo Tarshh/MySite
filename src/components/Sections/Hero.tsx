@@ -6,7 +6,11 @@ import { useEffect, useState } from "react";
 import { backgroundSlide, fadeIn } from "@/styling/keyframes";
 import styled from "@emotion/styled";
 
-export default function Hero() {
+type Props = {
+  setButtonHovered: (e: boolean) => void;
+};
+
+export default function Hero({ setButtonHovered }: Props) {
   const [loaded, setLoaded] = useState(0);
 
   useEffect(() => {
@@ -26,8 +30,12 @@ export default function Hero() {
         Enthusiatic dude with a passion for learning, music and web development.
       </StyledText>
       <ButtonsContainer>
-        <Button type="normal">View projects</Button>
-        <Button type="transparant">Contact me</Button>
+        <Button type="normal" setButtonHovered={setButtonHovered}>
+          View projects
+        </Button>
+        <Button type="transparant" setButtonHovered={setButtonHovered}>
+          Contact me
+        </Button>
       </ButtonsContainer>
     </Container>
   );

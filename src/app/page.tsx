@@ -7,6 +7,7 @@ import { useState, MouseEvent } from "react";
 
 export default function Home() {
   const [showTrailer, setShowTrailer] = useState(false);
+  const [buttonHovered, setButtonHovered] = useState(false);
   const [mouseposition, setMousePosition] = useState({
     xPosition: 0,
     yPosition: 0,
@@ -15,6 +16,7 @@ export default function Home() {
   function handleMouseMove(e: MouseEvent) {
     const circleOffset = 96;
 
+    console.log({ circleOffset });
     setMousePosition({
       xPosition: e.clientX - circleOffset,
       yPosition: e.clientY - circleOffset,
@@ -22,7 +24,7 @@ export default function Home() {
   }
 
   const handleMouseOver = () => setShowTrailer(true);
-  const handleMouseLeave = () => setShowTrailer(true);
+  const handleMouseLeave = () => setShowTrailer(false);
 
   return (
     <Container
@@ -30,8 +32,12 @@ export default function Home() {
       onMouseLeave={handleMouseLeave}
       onMouseMove={handleMouseMove}
     >
-      <Hero />
-      <MouseTrailer mousePosition={mouseposition} showTrailer={showTrailer} />
+      <Hero setButtonHovered={setButtonHovered} />
+      <MouseTrailer
+        buttonHovered={buttonHovered}
+        mousePosition={mouseposition}
+        showTrailer={showTrailer}
+      />
     </Container>
   );
 }
