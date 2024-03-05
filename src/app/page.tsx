@@ -21,11 +21,14 @@ export default function Home() {
     });
   }
 
+  const handleMouseOver = () => setShowTrailer(true);
+  const handleMouseLeave = () => setShowTrailer(true);
+
   return (
     <Container
-      onMouseOver={() => setShowTrailer(true)}
-      onMouseLeave={() => setShowTrailer(false)}
-      onMouseMove={(e) => handleMouseMove(e)}
+      onMouseOver={handleMouseOver}
+      onMouseLeave={handleMouseLeave}
+      onMouseMove={handleMouseMove}
     >
       <Hero />
       <MouseTrailer mousePosition={mouseposition} showTrailer={showTrailer} />
