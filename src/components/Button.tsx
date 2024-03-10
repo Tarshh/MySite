@@ -4,12 +4,16 @@ import React, { ReactNode, useCallback } from "react";
 type Props = {
   type: "normal" | "transparant";
   children: ReactNode;
-  setButtonHovered: (e: boolean) => void;
+  setButtonHovered?: (e: boolean) => void;
 };
 
 export function Button({ type, children, setButtonHovered }: Props) {
-  const handleMouseOver = () => setButtonHovered(true);
-  const handleMouseLeave = () => setButtonHovered(false);
+  function handleMouseOver() {
+    setButtonHovered && setButtonHovered(true);
+  }
+  function handleMouseLeave() {
+    setButtonHovered && setButtonHovered(false);
+  }
 
   switch (type) {
     case "normal":
