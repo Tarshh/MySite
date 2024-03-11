@@ -5,6 +5,7 @@ import { device } from "@/styling/breakpoints";
 import { useEffect, useState } from "react";
 import { backgroundSlide, fadeIn } from "@/styling/keyframes";
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 type Props = {
   setButtonHovered: (e: boolean) => void;
@@ -30,18 +31,22 @@ export default function Hero({ setButtonHovered }: Props) {
         Enthusiatic dude with a passion for learning, music and web development.
       </StyledText>
       <ButtonsContainer>
-        <Button type="normal" setButtonHovered={setButtonHovered}>
-          View projects
-        </Button>
-        <Button type="transparant" setButtonHovered={setButtonHovered}>
-          Contact me
-        </Button>
+        <StyledLink href="">
+          <Button type="normal" setButtonHovered={setButtonHovered}>
+            View projects
+          </Button>
+        </StyledLink>
+        <StyledLink href="">
+          <Button type="transparant" setButtonHovered={setButtonHovered}>
+            Contact me
+          </Button>
+        </StyledLink>
       </ButtonsContainer>
     </Container>
   );
 }
 
-const Container = styled.section`
+const Container = styled.div`
   animation: ${fadeIn} 0.7s ease;
   display: flex;
   flex-direction: column;
@@ -85,7 +90,7 @@ const ColoredHeading = styled.span<{ loaded: number }>`
       : "transparant"};
   color: ${(props) => (props.loaded ? "white" : "black")};
   background-size: 200% 100%;
-  animation: ${backgroundSlide} 0.5s ease-in 1s;
+  animation: ${backgroundSlide} 1s ease-out 1s;
   transition: color 0.5s ease 0.3s;
 `;
 
@@ -100,4 +105,8 @@ const ButtonsContainer = styled.div`
     max-width: 24rem;
     align-self: center;
   }
+`;
+
+const StyledLink = styled(Link)`
+  width: 100%;
 `;
