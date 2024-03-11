@@ -61,7 +61,7 @@ const ProjectsContainer = styled.section`
   background-color: #f6f6f8;
   padding: 2rem;
   margin: 0 auto;
-  @media ${device.md} {
+  @media ${device.lg} {
     padding: 8rem;
   }
 `;

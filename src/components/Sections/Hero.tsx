@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { backgroundSlide, fadeIn } from "@/styling/keyframes";
 import styled from "@emotion/styled";
 import Link from "next/link";
+import { mainColor } from "@/constants";
 
 type Props = {
   setButtonHovered: (e: boolean) => void;
@@ -86,7 +87,7 @@ const ColoredHeading = styled.span<{ loaded: number }>`
   display: inline;
   background: ${(props) =>
     props.loaded
-      ? "linear-gradient(to right, #f36458 50%, transparent 50%);"
+      ? `linear-gradient(to right, ${mainColor} 50%, transparent 50%);`
       : "transparant"};
   color: ${(props) => (props.loaded ? "white" : "black")};
   background-size: 200% 100%;
