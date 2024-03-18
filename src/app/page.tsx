@@ -57,10 +57,8 @@ const HeroContainer = styled.section`
 
 const ProjectsContainer = styled.section`
   position: relative;
-  z-index: 1;
   background-color: #f6f6f8;
-  padding: 2rem;
-  margin: 0 auto;
+  padding: 3rem;
   @media ${device.lg} {
     padding: 8rem;
   }
